@@ -65,14 +65,21 @@ namespace AssignmentTwoTaskOne
                 Console.WriteLine("Invalid input. Please enter House, Barn, or Garage.");
             }
         }
-
         static int GetBuildingSize()
         {
             while (true)
             {
                 Console.Write("Enter Building Size (1000 - 50000 sqft): ");
-                if (int.TryParse(Console.ReadLine(), out int size) && size >= 1000 && size <= 50000) return size;
-                Console.WriteLine("Invalid size. Please enter a value between 1000 and 50000.");
+                try
+                {
+                    int size = int.Parse(Console.ReadLine());
+                    if (size >= 1000 && size <= 50000) return size;
+                    Console.WriteLine("Invalid size. Please enter a value between 1000 and 50000.");
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                }
             }
         }
 
@@ -81,8 +88,16 @@ namespace AssignmentTwoTaskOne
             while (true)
             {
                 Console.Write("Enter Number of Bulbs (Max 20): ");
-                if (int.TryParse(Console.ReadLine(), out int bulbs) && bulbs >= 0 && bulbs <= 20) return bulbs;
-                Console.WriteLine("Invalid number. Enter a value between 0 and 20.");
+                try
+                {
+                    int bulbs = int.Parse(Console.ReadLine());
+                    if (bulbs >= 0 && bulbs <= 20) return bulbs;
+                    Console.WriteLine("Invalid number. Enter a value between 0 and 20.");
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                }
             }
         }
 
@@ -91,8 +106,16 @@ namespace AssignmentTwoTaskOne
             while (true)
             {
                 Console.Write("Enter Number of Outlets (Max 50): ");
-                if (int.TryParse(Console.ReadLine(), out int outlets) && outlets >= 0 && outlets <= 50) return outlets;
-                Console.WriteLine("Invalid number. Enter a value between 0 and 50.");
+                try
+                {
+                    int outlets = int.Parse(Console.ReadLine());
+                    if (outlets >= 0 && outlets <= 50) return outlets;
+                    Console.WriteLine("Invalid number. Enter a value between 0 and 50.");
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                }
             }
         }
 
@@ -105,6 +128,7 @@ namespace AssignmentTwoTaskOne
                 if (creditCard.Length == 16 && long.TryParse(creditCard, out _)) return creditCard;
                 Console.WriteLine("Invalid credit card. Enter exactly 16 digits.");
             }
+
         }
 
         static void DisplaySummary(string name, string type, int size, int bulbs, int outlets, string creditCard)
