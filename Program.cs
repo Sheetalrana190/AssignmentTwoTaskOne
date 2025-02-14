@@ -76,6 +76,16 @@ namespace AssignmentTwoTaskOne
             }
             else
                 Console.Write("Invalid number. Enter a value between 0 and 50: ");
+            // Get 16-digit Credit Card Number
+            string creditCard;
+            Console.Write("Enter 16-digit Credit Card Number: ");
+            while (true)
+            {
+                creditCard = Console.ReadLine();
+                if (creditCard.Length == 16 && long.TryParse(creditCard, out _))
+                    break;
+                Console.Write("Invalid credit card. Enter exactly 16 digits: ");
+            }
 
         }
     }
