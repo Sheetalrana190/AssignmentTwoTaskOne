@@ -32,8 +32,7 @@ namespace AssignmentTwoTaskOne
                     string customerDetails = GetCustomerDetails(name, type, size, bulbs, outlets, creditCard);
                     allCustomerDetails += customerDetails + "\n"; // Append current customer details
 
-                   // DisplaySummary(name, type, size, bulbs, outlets, creditCard);
-                   // PerformTask(type);
+
 
                     // Ask if the user wants to continue
                     Console.Write("Do you want to enter another customer? (yes/no): ");
@@ -163,33 +162,7 @@ namespace AssignmentTwoTaskOne
                     return "Invalid building type";
             }
         }
-        
-       /* static void DisplaySummary(string name, string type, int size, int bulbs, int outlets, string creditCard)
-        {
-            Console.WriteLine("\n--- Customer Summary ---");
-            Console.WriteLine($"Name: {name} ; Building Type: {type} ; Size: {size} sqft ; No. of Bulbs: {bulbs} ; No. of Outlets: {outlets} ; Credit Card: {creditCard.Substring(0, 4)} XXXX XXXX {creditCard.Substring(12)}");
-        }
-
-        static void PerformTask(string type)
-        {
-            Console.WriteLine("Tasks to be performed:");
-            Console.WriteLine("- Creating wiring schemas.");
-            Console.WriteLine("- Purchasing necessary parts.");
-            switch (type)
-            {
-                case "house":
-                    Console.WriteLine("- Installing fire alarms.");
-                    break;
-                case "barn":
-                    Console.WriteLine("- Wiring milking equipment.");
-                    break;
-                case "garage":
-                    Console.WriteLine("- Installing automatic doors.");
-                    break;
-                default:
-                    Console.WriteLine("Invalid building type.");
-                    break;
-            }
-        }*/
     }
 }
+        
+       
