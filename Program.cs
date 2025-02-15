@@ -30,10 +30,8 @@ namespace AssignmentTwoTaskOne
                     string creditCard = GetCreditCardNumber();
 
                     string customerDetails = GetCustomerDetails(name, type, size, bulbs, outlets, creditCard);
-                    allCustomerDetails += customerDetails + "\n"; // Append current customer details
-
-
-
+                    allCustomerDetails += customerDetails + "\n\n\n"; // Append current customer details
+                    
                     // Ask if the user wants to continue
                     Console.Write("Do you want to enter another customer? (yes/no): ");
                     string response = Console.ReadLine().ToLower();
