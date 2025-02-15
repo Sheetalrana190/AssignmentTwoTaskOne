@@ -58,8 +58,31 @@ namespace AssignmentTwoTaskOne
             {
                 Console.Write("Enter Customer Name: ");
                 string name = Console.ReadLine();
-                if (!string.IsNullOrEmpty(name)) return name;
-                Console.WriteLine("Name cannot be empty. Please enter a valid name.");
+
+                if (string.IsNullOrEmpty(name))
+                {
+                    Console.WriteLine("Name cannot be empty. Please enter a valid name.");
+                    continue;
+                }
+
+                bool isValid = true;
+                foreach (char c in name)
+                {
+                    if (!char.IsLetter(c))
+                    {
+                        isValid = false;
+                        break;
+                    }
+                }
+
+                if (isValid)
+                {
+                    return name;
+                }
+                else
+                {
+                    Console.WriteLine("Name should contain alphabets only. Please enter a valid name.");
+                }
             }
         }
 
