@@ -7,7 +7,7 @@ the information is displayed back to the electrician.
 *
 */
 
-using System.Xml.Linq;
+using System;
 
 namespace AssignmentTwoTaskOne
 {
@@ -15,6 +15,8 @@ namespace AssignmentTwoTaskOne
     {
         static void Main(string[] args)
         {
+            string allCustomerDetails = ""; // To store all customer details
+
             // Asking user for customer details and processing
             while (true)
             {
@@ -26,6 +28,9 @@ namespace AssignmentTwoTaskOne
                     int bulbs = GetNumberOfBulbs();
                     int outlets = GetNumberOfOutlets();
                     string creditCard = GetCreditCardNumber();
+
+                    string customerDetails = GetCustomerDetails(name, type, size, bulbs, outlets, creditCard);
+                    allCustomerDetails += customerDetails + "\n"; // Append current customer details
 
                     DisplaySummary(name, type, size, bulbs, outlets, creditCard);
                     PerformTask(type);
@@ -44,6 +49,10 @@ namespace AssignmentTwoTaskOne
                     Console.WriteLine($"An error occurred: {ex.Message}");
                 }
             }
+
+            // Display all customer details at the end
+            Console.WriteLine("\n--- All Customer Details ---");
+            Console.WriteLine(allCustomerDetails);
         }
 
         static string GetCustomerName()
@@ -67,6 +76,7 @@ namespace AssignmentTwoTaskOne
                 Console.WriteLine("Invalid input. Please enter House, Barn, or Garage.");
             }
         }
+
         static int GetBuildingSize()
         {
             while (true)
@@ -133,20 +143,36 @@ namespace AssignmentTwoTaskOne
 
         }
 
+        static string GetCustomerDetails(string name, string type, int size, int bulbs, int outlets, string creditCard)
+        {
+            string customerDetails = $"Customer Name: {name}, Building Type: {type}, Size: {size} sqft, {bulbs} bulbs, {outlets} outlets, Credit Card No.: {creditCard.Substring(0, 4)} XXXX XXXX {creditCard.Substring(12)}, Special Task: {GetSpecialTask(type)}, Common Tasks: Create wiring schemas and Purchase necessary parts.";
+            return customerDetails;
+        }
+
+        static string GetSpecialTask(string type)
+        {
+            switch (type)
+            {
+                case "house":
+                    return "Installing fire alarms";
+                case "barn":
+                    return "Wiring milking equipment";
+                case "garage":
+                    return "Installing automatic doors";
+                default:
+                    return "Invalid building type";
+            }
+        }
+
         static void DisplaySummary(string name, string type, int size, int bulbs, int outlets, string creditCard)
         {
             Console.WriteLine("\n--- Customer Summary ---");
             Console.WriteLine($"Name: {name} ; Building Type: {type} ; Size: {size} sqft ; No. of Bulbs: {bulbs} ; No. of Outlets: {outlets} ; Credit Card: {creditCard.Substring(0, 4)} XXXX XXXX {creditCard.Substring(12)}");
-            /*Console.WriteLine($"Building Type: {type}");
-            Console.WriteLine($"Building Size: {size} sqft");
-            Console.WriteLine($"Bulbs: {bulbs}");
-            Console.WriteLine($"Outlets: {outlets}");
-            Console.WriteLine($"Credit Card: {creditCard.Substring(0, 4)} XXXX XXXX {creditCard.Substring(12)}");*/
         }
 
         static void PerformTask(string type)
         {
-            Console.WriteLine("Task to be performe");
+            Console.WriteLine("Tasks to be performed:");
             Console.WriteLine("- Creating wiring schemas.");
             Console.WriteLine("- Purchasing necessary parts.");
             switch (type)
