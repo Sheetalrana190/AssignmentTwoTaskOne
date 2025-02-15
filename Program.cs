@@ -7,6 +7,8 @@ the information is displayed back to the electrician.
 *
 */
 
+using System.Xml.Linq;
+
 namespace AssignmentTwoTaskOne
 {
     class Program
@@ -134,26 +136,29 @@ namespace AssignmentTwoTaskOne
         static void DisplaySummary(string name, string type, int size, int bulbs, int outlets, string creditCard)
         {
             Console.WriteLine("\n--- Customer Summary ---");
-            Console.WriteLine($"Name: {name}");
-            Console.WriteLine($"Building Type: {type}");
+            Console.WriteLine($"Name: {name} ; Building Type: {type} ; Size: {size} sqft ; No. of Bulbs: {bulbs} ; No. of Outlets: {outlets} ; Credit Card: {creditCard.Substring(0, 4)} XXXX XXXX {creditCard.Substring(12)}");
+            /*Console.WriteLine($"Building Type: {type}");
             Console.WriteLine($"Building Size: {size} sqft");
             Console.WriteLine($"Bulbs: {bulbs}");
             Console.WriteLine($"Outlets: {outlets}");
-            Console.WriteLine($"Credit Card: {creditCard.Substring(0, 4)} XXXX XXXX {creditCard.Substring(12)}");
+            Console.WriteLine($"Credit Card: {creditCard.Substring(0, 4)} XXXX XXXX {creditCard.Substring(12)}");*/
         }
 
         static void PerformTask(string type)
         {
+            Console.WriteLine("Task to be performe");
+            Console.WriteLine("- Creating wiring schemas.");
+            Console.WriteLine("- Purchasing necessary parts.");
             switch (type)
             {
                 case "house":
-                    Console.WriteLine("Installing fire alarms.");
+                    Console.WriteLine("- Installing fire alarms.");
                     break;
                 case "barn":
-                    Console.WriteLine("Wiring milking equipment.");
+                    Console.WriteLine("- Wiring milking equipment.");
                     break;
                 case "garage":
-                    Console.WriteLine("Installing automatic doors.");
+                    Console.WriteLine("- Installing automatic doors.");
                     break;
                 default:
                     Console.WriteLine("Invalid building type.");
